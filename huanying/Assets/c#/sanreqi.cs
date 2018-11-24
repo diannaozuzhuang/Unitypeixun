@@ -22,6 +22,9 @@ public class sanreqi : MonoBehaviour {
 		Image icon = GameObject.Find("Canvas/Image/Image").GetComponent<Image>();
 		Sprite sp = Resources.Load("pic/Fan", typeof(Sprite)) as Sprite;
 		icon.sprite = sp;
-		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="55555555";
+		Image icon1 = GameObject.Find("Canvas/Image/Image1").GetComponent<Image>();
+		Sprite sp1 = Resources.Load("pic/sanreqi_location", typeof(Sprite)) as Sprite;
+		icon1.sprite = sp1;
+		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="散热器最好安装在CPU上方";
 	}
 }

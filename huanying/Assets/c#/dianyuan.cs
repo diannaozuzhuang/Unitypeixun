@@ -21,6 +21,9 @@ public class dianyuan : MonoBehaviour {
 		Image icon = GameObject.Find("Canvas/Image/Image").GetComponent<Image>();
 		Sprite sp = Resources.Load("pic/dianyuan", typeof(Sprite)) as Sprite;
 		icon.sprite = sp;
-		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="22222222222";
+		Image icon1 = GameObject.Find("Canvas/Image/Image1").GetComponent<Image>();
+		Sprite sp1 = Resources.Load("pic/dianyuan_location", typeof(Sprite)) as Sprite;
+		icon1.sprite = sp1;
+		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="电源的位置在机箱顶部靠后";
 	}
 }

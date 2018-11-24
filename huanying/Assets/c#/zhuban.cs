@@ -22,6 +22,9 @@ public class zhuban : MonoBehaviour {
 		Image icon = GameObject.Find("Canvas/Image/Image").GetComponent<Image>();
 		Sprite sp = Resources.Load("pic/timg", typeof(Sprite)) as Sprite;
 		icon.sprite = sp;
-		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="11111111";
+		Image icon1 = GameObject.Find("Canvas/Image/Image1").GetComponent<Image>();
+		Sprite sp1 = Resources.Load("pic/timg1", typeof(Sprite)) as Sprite;
+		icon1.sprite = sp1;
+		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="主板上分布着CPU插槽，内存插槽，显卡插槽";
     }
 }

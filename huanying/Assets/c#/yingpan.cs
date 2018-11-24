@@ -21,6 +21,9 @@ public class yingpan : MonoBehaviour {
 		Image icon = GameObject.Find("Canvas/Image/Image").GetComponent<Image>();
 		Sprite sp = Resources.Load("pic/yingpan", typeof(Sprite)) as Sprite;
 		icon.sprite = sp;
-		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="4444444";
+		Image icon1 = GameObject.Find("Canvas/Image/Image1").GetComponent<Image>();
+		Sprite sp1 = Resources.Load("pic/yingpan_location", typeof(Sprite)) as Sprite;
+		icon1.sprite = sp1;
+		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="硬盘的位置一般在机箱的前部中下位置，通过数据线与主板的硬盘接口连接";
 	}
 }

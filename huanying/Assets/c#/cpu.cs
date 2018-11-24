@@ -20,8 +20,12 @@ public class cpu : MonoBehaviour {
 	void OnClick()
 	{
 		Image icon = GameObject.Find("Canvas/Image/Image").GetComponent<Image>();
-		Sprite sp = Resources.Load("pic/CPU_top", typeof(Sprite)) as Sprite;
+		Sprite sp = Resources.Load("pic/cpu_top", typeof(Sprite)) as Sprite;
 		icon.sprite = sp;
-		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="666666666";
+
+		Image icon1 = GameObject.Find("Canvas/Image/Image1").GetComponent<Image>();
+		Sprite sp1 = Resources.Load("pic/cpu_location", typeof(Sprite)) as Sprite;
+		icon1.sprite = sp1;
+		GameObject.Find("Canvas/Image/Panel/Text").GetComponent<Text>().text="CPU，中央处理器，一块银色的超大集成电路";
 	}
 }
