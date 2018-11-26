@@ -90,25 +90,60 @@ public class pinzhuang: MonoBehaviour
 					cishu++;
 					//组件的名字
 				}
-				else if (cishu == 1)
-				{
-					go1 = hitInfo.collider.gameObject;
-					btnName1 = go1.name;
-					print(btnName1);
-					if(btnName==btnName1)
-					{
-						print("chenggong");
-						go.transform.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
-						go.transform.position = go1.transform.position;
+                else if (cishu == 1)
+                {
+                    go1 = hitInfo.collider.gameObject;
+                    btnName1 = go1.name;
+                    print(btnName1);
+                    if (btnName == btnName1)
+                    {
+                        print("chenggong");
+                        go.layer = LayerMask.NameToLayer("Ignore Raycast");
+                        go1.layer = LayerMask.NameToLayer("Ignore Raycast");
+                        if(go.name=="cpu")
+                        {
+                            GameObject gos;
+                            gos = GameObject.Find("zhuban/zhuban/sanreqi");
+                            gos.layer = LayerMask.NameToLayer("Default");
+                            //风扇设为defalut
+                        }
+                        GameObject gof;//判断两个物体设谁动；
+                        gof = go1.transform.parent.gameObject;
+                        if (gof.name == "zhuban")
+                        {                     
+                            if(go.name=="xianka")
+                            {
+                                go.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                            }
+                            /*if (go.name == "neicuntiao")
+                            {
+                                go.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                            }*/
+                            go.transform.position = go1.transform.position;
 
-					}
-					else
-					{
-						print("shibai");
-					}
-					cishu = 0;
-				}
-			}
+                        }
+                        else
+                        {
+                            if (go1.name == "xianka")
+                            {
+                                go1.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 360.0f);
+                            }
+                           /* if (go1.name == "neicuntiao")
+                            {
+                                go1.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 360.0f);
+                            }*/
+                            go1.transform.position = go.transform.position;
+
+                        }
+
+                    }
+                    else
+                    {
+                        print("shibai");
+                    }
+                    cishu = 0;
+                }
+            }
 		}
 	}
 
