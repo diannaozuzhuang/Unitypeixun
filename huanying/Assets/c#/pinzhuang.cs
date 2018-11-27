@@ -95,7 +95,7 @@ public class pinzhuang: MonoBehaviour
                     go1 = hitInfo.collider.gameObject;
                     btnName1 = go1.name;
                     print(btnName1);
-                    if (btnName == btnName1)
+                    if (btnName == btnName1&&(go1.transform.parent.gameObject.name!=go.transform.parent.gameObject.name))
                     {
                         print("chenggong");
                         go.layer = LayerMask.NameToLayer("Ignore Raycast");
