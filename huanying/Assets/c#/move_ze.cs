@@ -78,6 +78,8 @@ public class move_ze : MonoBehaviour
 
 }*/
 
+using UnityEngine;
+using UnityEditor;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -87,6 +89,9 @@ public class move_ze : MonoBehaviour
 	private Camera cam;//发射射线的摄像机
 	private GameObject go;//射线碰撞的物体
 	public static string btnName;//射线碰撞物体的名字
+	public static string savename;
+	public static string[] peijian= new string[10]{"dianyuan","yinpan","yinpan1","sanreqi","cpu","zhuban","","","",""};
+	public static int ii=0;
 	private Vector3 screenSpace;
 	private Vector3 offset;
 	private bool isDrage = false;
@@ -95,7 +100,7 @@ public class move_ze : MonoBehaviour
 	{
 		cam = Camera.main;
 	}
-	void Update()
+	void Update ()
 	{
 		//整体初始位置 
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -125,18 +130,26 @@ public class move_ze : MonoBehaviour
 		}
 
 		if (Input.GetMouseButton(0))
-		{
-			print (btnName);
+		{			
+			if (savename != btnName) {
+				print (btnName);
+				if (btnName == peijian [ii]) {
+					print ("zen    que");
+					ii = ii + 1;
+				} else {
+					UnityEditor.EditorUtility.DisplayDialog("错误","顺序错误","确认","取消");
+					//print (peijian [ii]);
+				}
+				savename = btnName;
+			}
+
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
 			Vector3 currentPosition = cam.ScreenToWorldPoint(currentScreenSpace) + offset;
 
 			if (btnName != null)
 			{
 				go.transform.position = currentPosition;
-				//print("硬件世界坐标为：" + go.transform.position.x + " " + go.transform.position.y + " " + screenSpace.z);
 				zhuanhuan = cam.WorldToScreenPoint(go.transform.position);
-				//print("硬件的屏幕坐标"+zhuanhuan.x+" "+zhuanhuan.y+" "+zhuanhuan.z);
-				//print("鼠标坐标为：" + Input.mousePosition.x + " " + Input.mousePosition.y + " " + screenSpace.z);
 			}
 			isDrage = true;
 		}
@@ -144,7 +157,7 @@ public class move_ze : MonoBehaviour
 		{
 			isDrage = false;
 		}
-		if (Input.GetMouseButtonUp(0))
+		/*if (Input.GetMouseButtonUp(0))
 		{
 			GameObject gaob = GameObject.Find("zhuban/zhuban/cpu");
 			Vector3 vb = cam.WorldToScreenPoint(gaob.transform.position);
@@ -153,7 +166,7 @@ public class move_ze : MonoBehaviour
 				print("pingjiechenggong");
 			}
 
-		}
+		}*/
 
 	}
 
