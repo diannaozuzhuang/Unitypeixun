@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+﻿using UnityEngine;
+using UnityEditor;
+=======
 ﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -81,16 +85,20 @@ public class move_ze : MonoBehaviour
 using UnityEngine;
 using UnityEditor;
 
+>>>>>>> d745386f08ab973e4e575c16ce5885738fcab2e6
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 public class move_ze : MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
 	private GameObject go;//射线碰撞的物体
 	public static string btnName;//射线碰撞物体的名字
 	public static string savename;
+<<<<<<< HEAD
+	public static string[] peijian= new string[7]{"dianyuan","yingpan","xianka","neicuntiao","sanreqi","cpu","zhuban"};
+=======
 	public static string[] peijian= new string[10]{"dianyuan","yinpan","yinpan1","sanreqi","cpu","zhuban","","","",""};
+>>>>>>> d745386f08ab973e4e575c16ce5885738fcab2e6
 	public static int ii=0;
 	private Vector3 screenSpace;
 	private Vector3 offset;
@@ -132,6 +140,17 @@ public class move_ze : MonoBehaviour
 		if (Input.GetMouseButton(0))
 		{			
 			if (savename != btnName) {
+<<<<<<< HEAD
+				if (btnName == peijian [ii]) {
+					ii = ii + 1;
+					savename = btnName;
+				}
+				else {
+					
+					UnityEditor.EditorUtility.DisplayDialog("错误","顺序错误","确认","取消");
+				}
+			}
+=======
 				print (btnName);
 				if (btnName == peijian [ii]) {
 					print ("zen    que");
@@ -143,6 +162,7 @@ public class move_ze : MonoBehaviour
 				savename = btnName;
 			}
 
+>>>>>>> d745386f08ab973e4e575c16ce5885738fcab2e6
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
 			Vector3 currentPosition = cam.ScreenToWorldPoint(currentScreenSpace) + offset;
 
@@ -157,6 +177,8 @@ public class move_ze : MonoBehaviour
 		{
 			isDrage = false;
 		}
+<<<<<<< HEAD
+=======
 		/*if (Input.GetMouseButtonUp(0))
 		{
 			GameObject gaob = GameObject.Find("zhuban/zhuban/cpu");
@@ -167,10 +189,7 @@ public class move_ze : MonoBehaviour
 			}
 
 		}*/
+>>>>>>> d745386f08ab973e4e575c16ce5885738fcab2e6
 
 	}
-
-
-
-
 }

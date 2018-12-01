@@ -1,58 +1,7 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class pinzhuang : MonoBehaviour
-{
-	private Camera cam;//发射射线的摄像机
-	private GameObject go;//射线碰撞的物体
-	public static string btnName;//射线碰撞物体的名字
-	private Vector3 screenSpace;
-	private Vector3 offset;
-	private bool isDrage = false;
-
-	private string name1;
-	private string name2;
-	Vector3 zhuanhuan;
-	void Start()
-	{
-		cam = Camera.main;
-	}
-	void Update()
-	{
-		//整体初始位置 
-		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-		//从摄像机发出到点击坐标的射线
-		RaycastHit hitInfo;
-
-
-		if (isDrage == false)
-		{
-			if (Physics.Raycast(ray, out hitInfo))
-			{
-				Debug.DrawLine(ray.origin, hitInfo.point);
-				go = hitInfo.collider.gameObject;
-			}
-		}
-		if (Input.GetMouseButtonDown(0)){
-			name1 = go.name;
-		}
-		else if (Input.GetMouseButtonDown (1)) {
-			name2 = go.name;
-		}
-		if (name1 == name2&&name1!=null)
-			print ("拼接完成");
-		if(name1!=name2&&name1!=null&&name2!=null)
-			print ("拼接错误");
-	}
-			
-
-
-		
-}*/
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 public class pinzhuang: MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
@@ -61,6 +10,7 @@ public class pinzhuang: MonoBehaviour
 	public static string btnName;//射线碰撞物体的名字
 	public static string btnName1;
 	int cishu = 0;
+	int num_shengyu=4;
 	private Vector3 screenSpace;
 	private Vector3 offset;
 	void Start()
@@ -76,8 +26,7 @@ public class pinzhuang: MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-
-
+				
 			if (Physics.Raycast(ray, out hitInfo))
 			{
 				//划出射线，只有在scene视图中才能看到
@@ -95,12 +44,13 @@ public class pinzhuang: MonoBehaviour
                     go1 = hitInfo.collider.gameObject;
                     btnName1 = go1.name;
                     print(btnName1);
-                    if (btnName == btnName1&&(go1.transform.parent.gameObject.name!=go.transform.parent.gameObject.name))
+					if (btnName.Equals(btnName1)&&(go1.transform.parent.gameObject.name!=go.transform.parent.gameObject.name))
                     {
                         print("chenggong");
+						num_shengyu--;	
                         go.layer = LayerMask.NameToLayer("Ignore Raycast");
                         go1.layer = LayerMask.NameToLayer("Ignore Raycast");
-                        if(go.name=="cpu")
+						if(go.name.Equals("cpu"))
                         {
                             GameObject gos;
                             gos = GameObject.Find("zhuban/zhuban/sanreqi");
@@ -109,42 +59,40 @@ public class pinzhuang: MonoBehaviour
                         }
                         GameObject gof;//判断两个物体设谁动；
                         gof = go1.transform.parent.gameObject;
-                        if (gof.name == "zhuban")
+						if (gof.name.Equals("zhuban"))
                         {                     
-                            if(go.name=="xianka")
+							if(go.name.Equals("xianka"))
                             {
                                 go.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                             }
-                            /*if (go.name == "neicuntiao")
-                            {
-                                go.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                            }*/
-                            go.transform.position = go1.transform.position;
-
-                        }
+                      
+                            go.transform.position = go1.transform.position; 
+						}
                         else
                         {
-                            if (go1.name == "xianka")
+							if (go1.name.Equals("xianka"))
                             {
                                 go1.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 360.0f);
                             }
-                           /* if (go1.name == "neicuntiao")
-                            {
-                                go1.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 360.0f);
-                            }*/
+                           
                             go1.transform.position = go.transform.position;
-
                         }
-
+ 
                     }
+
                     else
                     {
+						UnityEditor.EditorUtility.DisplayDialog("Error", "拼接错误", "确认", "取消");
                         print("shibai");
                     }
-                    cishu = 0;
+					if (num_shengyu == 0) {
+						UnityEditor.EditorUtility.DisplayDialog ("Finish", "拼接成功", "确认", "取消");
+						SceneManager.LoadScene (3);
+					}
+					cishu = 0;
                 }
             }
-		}
+		}  
 	}
 
 }
