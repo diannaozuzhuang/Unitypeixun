@@ -19,6 +19,7 @@ public class B : MonoBehaviour {
 	}
 	void OnClick()
 	{
+		Score.score = Score.score - 10;
 		UnityEditor.EditorUtility.DisplayDialog("Error", "显卡功能完好", "确认", "取消");
 	}
 }

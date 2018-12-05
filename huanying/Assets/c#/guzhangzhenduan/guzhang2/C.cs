@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class C : MonoBehaviour {
+	
 
 	// Use this for initialization
 	void Start () {
@@ -21,5 +22,6 @@ public class C : MonoBehaviour {
 	void OnClick()
 	{
 		UnityEditor.EditorUtility.DisplayDialog("Right", "开始排除故障", "确认");
+		SceneManager.LoadScene (8);
 	}
 }

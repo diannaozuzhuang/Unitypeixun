@@ -19,6 +19,7 @@ public class A : MonoBehaviour {
 	}
 	void OnClick()
 	{
+		Score.score = Score.score - 10;
 		UnityEditor.EditorUtility.DisplayDialog("Error", "系统功能完好", "确认", "取消");
 	}
 }

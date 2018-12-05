@@ -10,11 +10,12 @@ public class weixiu: MonoBehaviour
 	public static string btnName;//射线碰撞物体的名字
 	public static string btnName1;
 	bool finish=false;
+	bool buzhou=false;
 	public int cishu = 0;
 	private Vector3 screenSpace;
 	private Vector3 offset;
 	private bool isDrage = false;
-	private int score = 100;
+	//public static int score = 100;
 	private string score1;
 	Vector3 zhuanhuan;
 	void Start()
@@ -24,8 +25,8 @@ public class weixiu: MonoBehaviour
 	void Update ()
 	{
 		if (finish == true) {
-			score1 = score.ToString ();
-			UnityEditor.EditorUtility.DisplayDialog ("FINISH","你的得分："+ score1, "确认", "取消");
+			score1 = Score.score.ToString ();
+			UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
 			finish = false;
 		}
 		//整体初始位置 
@@ -53,19 +54,22 @@ public class weixiu: MonoBehaviour
 		{	
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
 			Vector3 currentPosition = cam.ScreenToWorldPoint(currentScreenSpace) + offset;
-			if (btnName== "neicuntiao1") {
+			if (btnName == "neicuntiao1") {
 				cishu = 0;
 				go.transform.position = currentPosition;
 				zhuanhuan = cam.WorldToScreenPoint (go.transform.position);
-				//go.layer = LayerMask.NameToLayer("Ignore Raycast");
-			}
-			else if (btnName!= "neicuntiao" && btnName!= "neicuntiao1" && btnName != null) {
+				buzhou = true;
+			} else if (btnName != "neicuntiao" && btnName != "neicuntiao1" && btnName != null) {
 				cishu = 0;
 				UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认", "取消");
-				score = score - 10;
+				Score.score = Score.score - 10;
+			} else if (btnName == "neicuntiao" && buzhou == false) {
+				cishu = 0;
+				UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏内存拔出", "确认", "取消");
+				Score.score = Score.score - 10;
 			}
 			isDrage = true;
-			if (Physics.Raycast (ray, out hitInfo)) {
+			if (Physics.Raycast (ray, out hitInfo)&&buzhou==true) {
 				//划出射线，只有在scene视图中才能看到
 				Debug.DrawLine (ray.origin, hitInfo.point);
 				print (btnName);
