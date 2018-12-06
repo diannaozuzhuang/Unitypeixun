@@ -1,5 +1,4 @@
-﻿#pragma strict
-var target : Transform;
+﻿var target : Transform;
 var distance : float = 10.0;
 var height : float = 1.0;
 var damping : float = 1.0;

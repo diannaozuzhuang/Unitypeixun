@@ -5,7 +5,7 @@ using UnityEngine;
 public class xiankazhenduan : MonoBehaviour
 {
 
-    private GameObject gameObject;
+    private GameObject gameObject1;
     //public Material material;//更改后的材质球，可拖拽赋值
     //gameObject.GetComponent<MeshRenderer>().materials[0].CopyPropertiesFromMaterial(material);//更改材质球
 
@@ -14,7 +14,7 @@ public class xiankazhenduan : MonoBehaviour
 
     void Start()
     {
-        gameObject = GameObject.Find("xianshiping/xianshiping/Cube/Quad");
+        gameObject1 = GameObject.Find("xianshiping/xianshiping/Cube/Quad");
         myTexture = (Texture2D)Resources.Load("pic/huaping");
         Invoke("OnClick", 2.0F);
     }
@@ -27,6 +27,6 @@ public class xiankazhenduan : MonoBehaviour
     {
         //gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
         //gameObject.tag = "pic/huaping.jpg";
-        gameObject.GetComponent<MeshRenderer>().material.mainTexture = myTexture;
+        gameObject1.GetComponent<MeshRenderer>().material.mainTexture = myTexture;
     }
 }
