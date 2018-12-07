@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S : MonoBehaviour {
+public class wenti2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +20,6 @@ public class S : MonoBehaviour {
 	void OnClick()
 	{
 		Score.score = Score.score - 10;
-		UnityEditor.EditorUtility.DisplayDialog("Error", "系统功能完好", "确认", "取消");
+		UnityEditor.EditorUtility.DisplayDialog("Error", "显卡完好", "确认", "取消");
 	}
 }
