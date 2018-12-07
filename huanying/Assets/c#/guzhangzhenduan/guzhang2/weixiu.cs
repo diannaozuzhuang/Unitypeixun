@@ -14,6 +14,7 @@ public class weixiu: MonoBehaviour
 	bool buzhou=false;
 	public int cishu = 0;
 	public int done = 0;
+	private bool getting=false;
 	private Vector3 screenSpace;
 	private Vector3 offset;
 	private bool isDrage = false;
@@ -60,15 +61,16 @@ public class weixiu: MonoBehaviour
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
 			Vector3 currentPosition = cam.ScreenToWorldPoint(currentScreenSpace) + offset;
 			if (btnName == "neicuntiao1") {
+				getting = true;
 				cishu = 0;
 				go.transform.position = currentPosition;
 				zhuanhuan = cam.WorldToScreenPoint (go.transform.position);
 				buzhou = true;
-			} else if (btnName != "neicuntiao" && btnName != "neicuntiao1" && btnName != null) {
+			} else if (btnName != "neicuntiao" && btnName != "neicuntiao1" && btnName != null&&getting==false) {
 				cishu = 0;
 				UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认", "取消");
 				Score.score = Score.score - 10;
-			} else if (btnName == "neicuntiao" && buzhou == false) {
+			} else if (btnName == "neicuntiao" && buzhou == false&&getting==false) {
 				cishu = 0;
 				UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏内存拔出", "确认", "取消");
 				Score.score = Score.score - 10;
