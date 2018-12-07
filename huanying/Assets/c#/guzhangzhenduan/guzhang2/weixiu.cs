@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 public class weixiu: MonoBehaviour
@@ -12,6 +13,7 @@ public class weixiu: MonoBehaviour
 	bool finish=false;
 	bool buzhou=false;
 	public int cishu = 0;
+	public int done = 0;
 	private Vector3 screenSpace;
 	private Vector3 offset;
 	private bool isDrage = false;
@@ -27,8 +29,11 @@ public class weixiu: MonoBehaviour
 		if (finish == true) {
 			score1 = Score.score.ToString ();
 			UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			done = 1;
 			finish = false;
 		}
+		if(done==1)
+			SceneManager.LoadScene(5);
 		//整体初始位置 
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		//从摄像机发出到点击坐标的射线
@@ -86,8 +91,8 @@ public class weixiu: MonoBehaviour
 				}	
 				if (btnName.Equals(btnName1)&&(go1.transform.parent.gameObject.name!=go.transform.parent.gameObject.name))
 				{
-					go.layer = LayerMask.NameToLayer("Ignore Raycast");
-					go1.layer = LayerMask.NameToLayer("Ignore Raycast");
+					//go.layer = LayerMask.NameToLayer("Ignore Raycast");
+					//go1.layer = LayerMask.NameToLayer("Ignore Raycast");
 					GameObject gof;//判断两个物体设谁动；
 					gof = go1.transform.parent.gameObject;
 					if (gof.name.Equals ("zhuban"))                    
