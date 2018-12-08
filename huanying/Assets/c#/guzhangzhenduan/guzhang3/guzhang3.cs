@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class a : MonoBehaviour {
+public class guzhang3 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,6 @@ public class a : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		UnityEditor.EditorUtility.DisplayDialog("Right", "开始排除故障", "确认");
-		SceneManager.LoadScene (12);
+		SceneManager.LoadScene(13);
 	}
 }

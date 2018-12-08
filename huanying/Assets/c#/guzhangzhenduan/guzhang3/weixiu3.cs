@@ -73,7 +73,7 @@ public class weixiu3 : MonoBehaviour {
 				Score.score = Score.score - 10;
 				buzhou = false;
 			} else if(btnName == "dianyuan1" && buzhou == true){
-				finish = true;
+				//finish = true;
 
 			}
 			isDrage = true;
@@ -94,6 +94,7 @@ public class weixiu3 : MonoBehaviour {
 				}	
 				if (btnName.Equals(btnName1)&&(go1.transform.parent.gameObject.name!=go.transform.parent.gameObject.name))
 				{
+					print (btnName + "            " + btnName1);
 					go.layer = LayerMask.NameToLayer("Ignore Raycast");
 					go1.layer = LayerMask.NameToLayer("Ignore Raycast");
 					GameObject gof;//判断两个物体设谁动；
