@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using dafen;
 public class weixiu3 : MonoBehaviour {
 
 	private Camera cam;//发射射线的摄像机
@@ -30,7 +30,9 @@ public class weixiu3 : MonoBehaviour {
 	void Update () {
 		if (finish == true) {
 			score1 = Score.score.ToString ();
+
 			UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			lurufenshu.jilu ("Assets/fenshu","guzahng3.txt",Score.score);		
 			finish = false;
 			done = 1;
 		}

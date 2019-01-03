@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using dafen;
 public class weixiu5 : MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
