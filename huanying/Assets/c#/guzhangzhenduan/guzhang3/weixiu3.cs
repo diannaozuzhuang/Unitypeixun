@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class weixiu3 : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class weixiu3 : MonoBehaviour {
 	public static string btnName1;
 	bool finish=false;
 	bool buzhou=false;
+	int done=0;
 	public int cishu = 0;
 	private Vector3 screenSpace;
 	private Vector3 offset;
@@ -30,7 +32,10 @@ public class weixiu3 : MonoBehaviour {
 			score1 = Score.score.ToString ();
 			UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
 			finish = false;
+			done = 1;
 		}
+		if(done==1)
+			SceneManager.LoadScene(5);
 		//整体初始位置 
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		//从摄像机发出到点击坐标的射线
