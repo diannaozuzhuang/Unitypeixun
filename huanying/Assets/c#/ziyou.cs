@@ -4,16 +4,16 @@ public class ziyou : MonoBehaviour
 {
 	public Transform target;
 	public float distanceX = 0f;
-	public float distanceY = 20f;
+	public float distanceY = 0f;
 	public float distanceZ = 0f;
 	public float minDistance = -2f;
 	public float maxDistance =-50f;
-	public float angleX=45f;
-	public float angleY=25f;
+	public float angleX=0f;
+	public float angleY=0f;
 	public float angleZ=0f;
 	public float angleSpeed = 5f;
 	public float scrollSpeed =150f;
-	public float moveSpeed = 5f;
+	public float moveSpeed = 15f;
 	void Start ()
 	{
 		Debug.Log(Quaternion.Euler(0, 90, 0));
