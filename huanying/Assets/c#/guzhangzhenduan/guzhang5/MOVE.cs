@@ -13,7 +13,7 @@ public class MOVE : MonoBehaviour {
 	public static string btnName;//射线碰撞物体的名字
 	public static string btnName1;
 	int cishu = 0;
-	int num_shengyu=8;
+	int num_shengyu=7;
 	private Vector3 screenSpace;
 	private Vector3 offset;
 
@@ -46,7 +46,12 @@ public class MOVE : MonoBehaviour {
 					print(btnName1);
 					if (btnName.Equals(btnName1)&&(go1.transform.parent.gameObject.name!=go.transform.parent.gameObject.name)){
 						print("chenggong");
-						num_shengyu--;	
+						num_shengyu--;
+						if (num_shengyu <4) {
+							GameObject gos;
+							gos = GameObject.Find("zhuban/zhuban");
+							gos.layer = LayerMask.NameToLayer("Default");
+						}
 						go.layer = LayerMask.NameToLayer("Ignore Raycast");
 						go1.layer = LayerMask.NameToLayer("Ignore Raycast");
 						if(go.name.Equals("cpu")){
@@ -78,7 +83,7 @@ public class MOVE : MonoBehaviour {
 						print("shibai");
 					}
 					if (num_shengyu == 0) {
-						UnityEditor.EditorUtility.DisplayDialog ("Finish", "拼接成功", "确认", "取消");
+						UnityEditor.EditorUtility.DisplayDialog ("Finish", "维修完成", "确认", "取消");
 					}
 					cishu = 0;
 				}
