@@ -35,6 +35,7 @@ public class denglu : MonoBehaviour {
 		sr = File.OpenText (path + "//" + name1);
 		string t_Line;
 		string[] str;
+		int aa = 0;
 		while ((t_Line = sr.ReadLine ()) != null) {
 			str=t_Line.Split(';');
 			if (zhanghao.Equals (str [0])) {
@@ -42,6 +43,7 @@ public class denglu : MonoBehaviour {
 					sr.Close ();
 					sr.Dispose ();
 					SceneManager.LoadScene (0);
+					aa++;
 					break;
 				} else {
 					UnityEditor.EditorUtility.DisplayDialog ("错误","密码不正确","确认");
@@ -49,8 +51,12 @@ public class denglu : MonoBehaviour {
 
 			}
 		}
-		UnityEditor.EditorUtility.DisplayDialog("错误","没有该用户","确认");
-		sr.Close ();
-		sr.Dispose ();
+		if (aa == 0) {
+			UnityEditor.EditorUtility.DisplayDialog("错误","没有该用户","确认");
+			sr.Close ();
+			sr.Dispose ();
+		}
+
+
 	}
 }

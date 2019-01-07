@@ -40,18 +40,20 @@ public class chuangjian : MonoBehaviour {
 				if (zhanghao.Equals (str [0])) {
 					UnityEditor.EditorUtility.DisplayDialog ("错误","该用户已存在","确认");
 					jishu++;
-					sr.Close ();
-					sr.Dispose ();
+
 					break;
 				}
 			}
-				if(jishu==0){
+			sr.Close ();
+			sr.Dispose ();	
+			if(jishu==0){
 					StreamWriter sw;
 					FileInfo fi = new FileInfo (path + "//" + name1);
 					sw = fi.AppendText ();
 					sw.WriteLine (zhanghao + ';' + mima);
 					sw.Close ();
 					sw.Dispose ();
+				UnityEditor.EditorUtility.DisplayDialog ("成功","注册成功","确认");
 				}
 			
 		} else {
