@@ -17,18 +17,19 @@ public class chuangjian : MonoBehaviour {
 	{
 		string path = "Assets/yonghu";
 		string name1="yonghu.txt";
-		string zhanghao;
-		string mima;
-		string mima1;
+		string zhanghao="";
+		string mima="";
+		string mima1="";
 		InputField zh = GameObject.Find ("Canvas/Image/yonghuming").GetComponent<InputField> ();
 		InputField mm = GameObject.Find ("Canvas/Image/mima").GetComponent<InputField> ();
 		InputField qmm = GameObject.Find ("Canvas/Image/qmima").GetComponent<InputField> ();
 		zhanghao = zh.text;
 		mima = mm.text;
 		mima1 = qmm.text;
-
-
-		if (mima.Equals (mima1) && mima != null) {
+		if (zhanghao.Equals ("") || mima.Equals ("")) {
+			UnityEditor.EditorUtility.DisplayDialog ("错误","用户名或密码不能为空","确认");
+		}
+		else if (mima.Equals (mima1) && mima != null) {
 			
 			StreamReader sr = null;
 			sr = File.OpenText (path + "//" + name1);

@@ -14,8 +14,10 @@ public class xiankazhenduan : MonoBehaviour
 
     void Start()
     {
+		
         gameObject1 = GameObject.Find("xianshiping/xianshiping/Cube/Quad");
-        myTexture = (Texture2D)Resources.Load("pic/huaping");
+		myTexture = (Texture2D)Resources.Load("pic/huaping");
+		gameObject1.GetComponent<MeshRenderer>().material.color = Color.white;
         Invoke("OnClick", 2.0F);
     }
 
