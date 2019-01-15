@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Common;
 public class move_ze : MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
@@ -55,8 +56,11 @@ public class move_ze : MonoBehaviour
 					savename = btnName;
 				}
 				else {
-					
-					UnityEditor.EditorUtility.DisplayDialog("错误","顺序错误","确认","取消");
+					MessageBox.Show("                   错误","顺序错误","再试一次");
+					MessageBox.confim = () => {
+						
+					};
+					//UnityEditor.EditorUtility.DisplayDialog("错误","顺序错误","确认","取消");
 				}
 			}
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);

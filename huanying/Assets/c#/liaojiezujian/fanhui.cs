@@ -20,6 +20,6 @@ public class fanhui : MonoBehaviour {
     }
     void OnClick()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }

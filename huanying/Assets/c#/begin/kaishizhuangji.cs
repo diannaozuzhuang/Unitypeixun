@@ -20,6 +20,6 @@ public class kaishizhuangji : MonoBehaviour {
     }
     void OnClick()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 }

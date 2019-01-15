@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
+using Common;
 
 public class denglu : MonoBehaviour {
 
@@ -42,17 +43,25 @@ public class denglu : MonoBehaviour {
 				if (mima.Equals (str [1])) {
 					sr.Close ();
 					sr.Dispose ();
-					SceneManager.LoadScene (0);
+					SceneManager.LoadScene (2);
 					aa++;
 					break;
 				} else {
-					UnityEditor.EditorUtility.DisplayDialog ("错误","密码不正确","确认");
+					//UnityEditor.EditorUtility.DisplayDialog ("错误","密码不正确","确认");
+					MessageBox.Show("                   错误","密码不正确","确认");
+					MessageBox.confim = () => {
+
+					};
 				}
 
 			}
 		}
 		if (aa == 0) {
-			UnityEditor.EditorUtility.DisplayDialog("错误","没有该用户","确认");
+			//UnityEditor.EditorUtility.DisplayDialog("错误","没有该用户","确认");
+			MessageBox.Show("                   错误","没有该用户","确认");
+			MessageBox.confim = () => {
+
+			};
 			sr.Close ();
 			sr.Dispose ();
 		}

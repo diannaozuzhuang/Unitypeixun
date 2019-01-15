@@ -124,12 +124,20 @@ public class pinzhuang: MonoBehaviour
 
                     else
                     {
-						UnityEditor.EditorUtility.DisplayDialog("Error", "拼接错误", "确认", "取消");
+						//UnityEditor.EditorUtility.DisplayDialog("Error", "拼接错误", "确认", "取消");
+						MessageBox.Show("                 Error", "拼接错误", "确认");
+						MessageBox.confim = () => {
+
+						};
                         print("shibai");
                     }
 					if (num_shengyu == 0) {
-						UnityEditor.EditorUtility.DisplayDialog ("Finish", "拼接成功", "确认", "取消");
-						SceneManager.LoadScene (3);
+						//UnityEditor.EditorUtility.DisplayDialog ("Finish", "拼接成功", "确认", "取消");
+						MessageBox.Show("                 Finish", "拼接成功", "确认");
+						MessageBox.confim = () => {
+
+						};
+						SceneManager.LoadScene (5);
 					}
 					cishu = 0;
                 }

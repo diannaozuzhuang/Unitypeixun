@@ -20,6 +20,6 @@ public class guzhang4 : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		SceneManager.LoadScene(10);
+		SceneManager.LoadScene(14);
 	}
 }

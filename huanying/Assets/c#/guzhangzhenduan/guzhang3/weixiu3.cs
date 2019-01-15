@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using dafen;
+using Common;
 public class weixiu3 : MonoBehaviour {
 
 	private Camera cam;//发射射线的摄像机
@@ -31,13 +32,17 @@ public class weixiu3 : MonoBehaviour {
 		if (finish == true) {
 			score1 = Score.score.ToString ();
 
-			UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			MessageBox.Show("                  FINISH","故障已排除，你的得分："+ score1, "确认");
+			MessageBox.confim = () => {
+
+			};
 			lurufenshu.jilu ("Assets/fenshu","guzahng3.txt",Score.score);		
 			finish = false;
 			done = 1;
 		}
 		if(done==1)
-			SceneManager.LoadScene(5);
+			SceneManager.LoadScene(7);
 		//整体初始位置 
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		//从摄像机发出到点击坐标的射线
@@ -71,12 +76,20 @@ public class weixiu3 : MonoBehaviour {
 				buzhou = true;
 			} else if (btnName != "dianyuan" && btnName != "dianyuan1" && btnName != null) {
 				cishu = 0;
-				UnityEditor.EditorUtility.DisplayDialog ("错误", btnName + "功能良好", "确认", "取消");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误", btnName + "功能良好", "确认", "取消");
+				MessageBox.Show("                  错误", btnName + "功能良好", "确认");
+				MessageBox.confim = () => {
+
+				};
 				Score.score = Score.score - 10;
 				buzhou = false;
 			} else if (btnName == "dianyuan1" && buzhou == false) {
 				cishu = 0;
-				UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏电源取出", "确认", "取消");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏电源取出", "确认", "取消");
+				MessageBox.Show("                  错误", "请先将损坏电源取出", "确认");
+				MessageBox.confim = () => {
+
+				};
 				Score.score = Score.score - 10;
 				buzhou = false;
 			} else if(btnName == "dianyuan1" && buzhou == true){

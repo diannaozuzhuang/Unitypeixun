@@ -17,6 +17,6 @@ public class zuce : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		SceneManager.LoadScene(16);
+		SceneManager.LoadScene(1);
 	}
 }

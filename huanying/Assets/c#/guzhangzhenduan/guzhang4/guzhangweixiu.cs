@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using dafen;
+using Common;
 public class guzhangweixiu: MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
@@ -31,13 +31,17 @@ public class guzhangweixiu: MonoBehaviour
 	{
 		if (finish == true) {
 			score1 = Score.score.ToString ();
-			UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			MessageBox.Show("                  FINISH","故障已排除，你的得分："+ score1, "我知道了");
+			MessageBox.confim = () => {
+
+			};
 			lurufenshu.jilu ("Assets/fenshu","guzahng4.txt",Score.score);
 			done = 1;
 			finish = false;
 		}
 		if(done==1)
-			SceneManager.LoadScene(5);
+			SceneManager.LoadScene(7);
 		//整体初始位置 
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		//从摄像机发出到点击坐标的射线
@@ -72,7 +76,11 @@ public class guzhangweixiu: MonoBehaviour
 			} 
 			else if (btnName != "sanreqi1" &&btnName != "sanreqi"&& btnName != null&& getting==false) {
 				cishu = 0;
-				UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认");
+				MessageBox.Show("                  错误", "此部件功能良好", "确认");
+				MessageBox.confim = () => {
+
+				};
 				Score.score = Score.score - 10;
 			}
 		}

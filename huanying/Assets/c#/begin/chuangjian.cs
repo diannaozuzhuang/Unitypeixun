@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using Common;
 
 public class chuangjian : MonoBehaviour {
 
@@ -27,7 +28,11 @@ public class chuangjian : MonoBehaviour {
 		mima = mm.text;
 		mima1 = qmm.text;
 		if (zhanghao.Equals ("") || mima.Equals ("")) {
-			UnityEditor.EditorUtility.DisplayDialog ("错误","用户名或密码不能为空","确认");
+			//UnityEditor.EditorUtility.DisplayDialog ("错误","用户名或密码不能为空","确认");
+			MessageBox.Show("                   错误","用户名或密码不能为空","确认");
+			MessageBox.confim = () => {
+
+			};
 		}
 		else if (mima.Equals (mima1) && mima != null) {
 			
@@ -39,7 +44,11 @@ public class chuangjian : MonoBehaviour {
 			while (((t_Line = sr.ReadLine ()) != null)) {
 				str = t_Line.Split (';');
 				if (zhanghao.Equals (str [0])) {
-					UnityEditor.EditorUtility.DisplayDialog ("错误","该用户已存在","确认");
+					//UnityEditor.EditorUtility.DisplayDialog ("错误","该用户已存在","确认");
+					MessageBox.Show("                   错误","该用户已存在","确认");
+					MessageBox.confim = () => {
+
+					};
 					jishu++;
 
 					break;
@@ -54,13 +63,21 @@ public class chuangjian : MonoBehaviour {
 					sw.WriteLine (zhanghao + ';' + mima);
 					sw.Close ();
 					sw.Dispose ();
-				UnityEditor.EditorUtility.DisplayDialog ("成功","注册成功","确认");
+				//UnityEditor.EditorUtility.DisplayDialog ("成功","注册成功","确认");
+				MessageBox.Show("                   成功","注册成功","确认");
+				MessageBox.confim = () => {
+
+				};
 				}
 			
 		} else {
 		
 			Debug.Log ("两次密码不一样");
-			UnityEditor.EditorUtility.DisplayDialog ("错误","两次密码不一样","确认");
+			//UnityEditor.EditorUtility.DisplayDialog ("错误","两次密码不一样","确认");
+			MessageBox.Show("                   错误","两次密码不一样","确认");
+			MessageBox.confim = () => {
+
+			};
 		}
 	}
 	public void chachong(string str)

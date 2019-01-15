@@ -20,6 +20,6 @@ public class tiaozhuan : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		SceneManager.LoadScene(14);
+		SceneManager.LoadScene(16);
 	}
 }

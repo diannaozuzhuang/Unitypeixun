@@ -20,6 +20,6 @@ public class fanhuidenglv : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		SceneManager.LoadScene(18);
+		SceneManager.LoadScene(0);
 	}
 }

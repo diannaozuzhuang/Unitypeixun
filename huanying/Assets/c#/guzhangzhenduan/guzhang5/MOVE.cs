@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using dafen;
+using Common;
 
 public class MOVE : MonoBehaviour {
 	public float speed=5;
@@ -61,6 +62,10 @@ public class MOVE : MonoBehaviour {
 					if (GameObject.Find(btnName).tag== "good") {
 						//cishu = 0;
 						//UnityEditor.EditorUtility.DisplayDialog("提示", "该部件完好", "确认", "取消");
+						MessageBox.Show("                 提示", "该部件完好", "确认");
+						MessageBox.confim = () => {
+
+						};
 						score = score-10;
 						print (score);
 					}
@@ -102,13 +107,18 @@ public class MOVE : MonoBehaviour {
 						}
 					}
 					else{
-						UnityEditor.EditorUtility.DisplayDialog("Error", "拼接错误", "确认", "取消");
+						//UnityEditor.EditorUtility.DisplayDialog("Error", "拼接错误", "确认", "取消");
+
 						//print("shibai");
 					}
 					if (num_shengyu == 0) {
-						UnityEditor.EditorUtility.DisplayDialog ("Finish", "维修完成", "确认", "取消");
+						//UnityEditor.EditorUtility.DisplayDialog ("Finish", "维修完成", "确认", "取消");
 						score1 = score.ToString ();
-						UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+						//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+						MessageBox.Show("                 FINISH","故障已排除，你的得分："+ score1, "我知道了");
+						MessageBox.confim = () => {
+
+						};
 						lurufenshu.jilu ("Assets/fenshu","guzahng5.txt",score);
 					}
 					cishu = 0;

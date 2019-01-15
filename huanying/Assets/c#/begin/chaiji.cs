@@ -20,6 +20,6 @@ public class chaiji : MonoBehaviour {
     }
     void OnClick()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(6);
     }
 }

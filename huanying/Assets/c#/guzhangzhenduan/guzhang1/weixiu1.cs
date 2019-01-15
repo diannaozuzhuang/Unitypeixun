@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using dafen;
+using Common;
 public class weixiu1: MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
@@ -58,18 +58,30 @@ public class weixiu1: MonoBehaviour
 				buzhou = true;
 			} else if (btnName != "xianka" && btnName != "xianka1" && btnName != null) {
 				cishu = 0;
-				UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认", "取消");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认", "取消");
+				MessageBox.Show("                   错误","此部件功能良好","确认","取消");
+				MessageBox.confim = () => {
+
+				};
 				paichayi.fenshu = paichayi.fenshu - 5;
 			} else if (btnName == "xianka" && buzhou == false) {
 				cishu = 0;
-				UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏显卡拔出", "确认", "取消");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏显卡拔出", "确认", "取消");
 				//paichayi.fenshu = paichayi.fenshu - 5;
+				MessageBox.Show("                   错误","请先将损坏显卡拔出","确认","取消");
+				MessageBox.confim = () => {
+
+				};
 			}
 			else if(btnName == "xianka" && buzhou == true) {
 				cishu = 0;
 				fenshu = paichayi.fenshu;
 				lurufenshu.jilu ("Assets/fenshu/guzhangyi","guzahng1.txt",fenshu);
-				UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分：" +fenshu, "确认", "取消");
+				//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分：" +fenshu, "确认", "取消");
+				MessageBox.Show("                   FINISH","故障已排除，你的得分：" +fenshu,"确认","取消");
+				MessageBox.confim = () => {
+
+				};
 			}
 			isDrage = true;
 

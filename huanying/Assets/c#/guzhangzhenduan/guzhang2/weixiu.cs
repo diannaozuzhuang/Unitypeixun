@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using dafen;
+using Common;
 
 
 public class weixiu: MonoBehaviour
@@ -32,7 +32,11 @@ public class weixiu: MonoBehaviour
 	{
 		if (finish == true) {
 			score1 = Score.score.ToString ();
-			UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
+			MessageBox.Show("                 FINISH","故障已排除，你的得分："+ score1, "确认");
+			MessageBox.confim = () => {
+
+			};
 			lurufenshu.jilu ("Assets/fenshu","guzahng2.txt",Score.score);
 			done = 1;
 			finish = false;
@@ -72,11 +76,19 @@ public class weixiu: MonoBehaviour
 				buzhou = true;
 			} else if (btnName != "neicuntiao" && btnName != "neicuntiao1" && btnName != null&&getting==false) {
 				cishu = 0;
-				UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认", "取消");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认", "取消");
+				MessageBox.Show("                 错误", "此部件功能良好", "确认");
+				MessageBox.confim = () => {
+
+				};
 				Score.score = Score.score - 10;
 			} else if (btnName == "neicuntiao" && buzhou == false&&getting==false) {
 				cishu = 0;
-				UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏内存拔出", "确认", "取消");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏内存拔出", "确认", "取消");
+				MessageBox.Show("                 错误", "请先将损坏内存拔出", "确认");
+				MessageBox.confim = () => {
+
+				};
 				Score.score = Score.score - 10;
 			}
 			isDrage = true;

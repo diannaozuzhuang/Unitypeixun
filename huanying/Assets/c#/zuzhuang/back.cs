@@ -1,18 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class guzhang3 : MonoBehaviour {
+public class back : MonoBehaviour
+{
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+	
 	}
 	public void OnMouseUp()
 	{
@@ -20,6 +22,7 @@ public class guzhang3 : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		SceneManager.LoadScene(12);
+		SceneManager.LoadScene(2);
 	}
 }
+

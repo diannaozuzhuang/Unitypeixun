@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityStandardAssets.Utility;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Common;
+
 public class weixiu5 : MonoBehaviour
 {
 	public static GameObject[] obj = new GameObject[5];
@@ -53,7 +55,11 @@ public class weixiu5 : MonoBehaviour
 				duandian = true;
 			}
 			if(duandian==false){
-				UnityEditor.EditorUtility.DisplayDialog("错误","请先卸下电源","确认","取消");
+				//UnityEditor.EditorUtility.DisplayDialog("错误","请先卸下电源","确认","取消");
+				MessageBox.Show("                 错误","请先卸下电源", "我知道了");
+				MessageBox.confim = () => {
+
+				};
 			}
 			if (savename != btnName&&duandian==true) {
 				if (btnName == peijian [ii]) {
@@ -83,7 +89,11 @@ public class weixiu5 : MonoBehaviour
 						xie = "CPU";
 					else
 						xie = "已损坏主板";
-					UnityEditor.EditorUtility.DisplayDialog ("错误", xie+"未卸下", "确认", "取消");
+					//UnityEditor.EditorUtility.DisplayDialog ("错误", xie+"未卸下", "确认", "取消");
+					MessageBox.Show("                 错误", xie+"未卸下", "确认","取消");
+					MessageBox.confim = () => {
+
+					};
 				}
 				/*if (btnName != null) {
 					string GB=btnName;
@@ -106,8 +116,12 @@ public class weixiu5 : MonoBehaviour
 				go.transform.position = currentPosition;
 				zhuanhuan = cam.WorldToScreenPoint(go.transform.position);
 				if (ii==7&&savename == "zhuban") {
-					UnityEditor.EditorUtility.DisplayDialog ("提示", "第一步已完成，更换完好主板并组装配件", "确认", "取消");
-					SceneManager.LoadScene(17);
+					//UnityEditor.EditorUtility.DisplayDialog ("提示", "第一步已完成，更换完好主板并组装配件", "确认", "取消");
+					MessageBox.Show("                 提示", "第一步已完成，更换完好主板并组装配件", "确认");
+					MessageBox.confim = () => {
+
+					};
+					SceneManager.LoadScene(18);
 				}
 			}
 			isDrage = true;

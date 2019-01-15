@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Common;
   
 public class fpaicha : MonoBehaviour {
 
@@ -34,7 +35,11 @@ public class fpaicha : MonoBehaviour {
 			}
 			gameobject.GetComponent<MeshRenderer> ().material.color = Color.white;
 		} else {
-			UnityEditor.EditorUtility.DisplayDialog ("ERROR","不对", "确认", "取消");
+			//UnityEditor.EditorUtility.DisplayDialog ("ERROR","不对", "确认", "取消");
+			MessageBox.Show("                   错误","错误","再试一次");
+			MessageBox.confim = () => {
+
+			};
 		}
 	}
 	public void bian()

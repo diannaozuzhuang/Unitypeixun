@@ -9,6 +9,7 @@ public class UIMessage : MonoBehaviour
     public Button Cancle;
 	public Text Suretext;
 	public Text Cancletext;
+	public int jishul;
     void Start()
     {
         Sure.onClick.AddListener(MessageBox.Sure);
@@ -17,6 +18,10 @@ public class UIMessage : MonoBehaviour
         Content.text = MessageBox.ContentStr;
 		Suretext.text = MessageBox.SureStr;
 		Cancletext.text = MessageBox.CancleStr;
+		jishul = MessageBox.jishu;
+		if (jishul == 1) {
+			Sure.gameObject.SetActive (false);
+		}
     }
 	/*public void test()
 	{

@@ -42,25 +42,25 @@ public class paichayi : MonoBehaviour {
         if (go == button2.gameObject)
         {
             fenshu = fenshu - 5;
-			MessageBox.Show("                   提示窗口","选择错误","确认","确认");
+			MessageBox.Show("                   提示窗口","选择错误","确认");
 			MessageBox.confim = () => {
-				Debug.Log ("shabile");
+				//Debug.Log ("shabile");
 			};
         }
         if (go == button3.gameObject)
         {
             fenshu = fenshu - 5;
-			MessageBox.Show("                   提示窗口","选择错误","确认","确认");
+			MessageBox.Show("                   提示窗口","选择错误","确认");
 			MessageBox.confim = () => {
-				Debug.Log ("shabile");
+				//Debug.Log ("shabile");
 			};
         }
         if (go == button4.gameObject)
         {
             fenshu = fenshu - 5;
-			MessageBox.Show("                   提示窗口","选择错误","确认","确认");
+			MessageBox.Show("                   提示窗口","选择错误","确认");
 			MessageBox.confim = () => {
-				Debug.Log ("shabile");
+				//Debug.Log ("shabile");
 			};
         }
     }
