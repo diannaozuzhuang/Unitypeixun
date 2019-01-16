@@ -38,8 +38,9 @@ public class guzhangweixiu: MonoBehaviour
 			MessageBox.confim = () => {
 
 			};*/
-			MsgBoxBase.Show ("故障以排除，您的得分是" + score1,GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
+			MsgBoxBase.Show ("故障已排除，您的得分是" + score1,GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 			lurufenshu.jilu ("Assets/fenshu","guzahng4.txt",Score.score);
+			Score.score = 100;
 			done = 1;
 			finish = false;
 		}

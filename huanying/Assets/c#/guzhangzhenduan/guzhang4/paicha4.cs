@@ -30,15 +30,7 @@ public class paicha4 : MonoBehaviour {
 	private void OnButtonClick(GameObject go)
 	{
 		//在这里监听按钮的点击事件
-		if (go == button3.gameObject)
-		{
-			MessageBox.Show("                   提示窗口","接下来是不是要进行故障维修","维修","不进行");
-			MessageBox.confim = () => {
-				SceneManager.LoadScene(15);
-			};
-
-		}
-		if (go == button2.gameObject)
+		if (go == button.gameObject)
 		{
 			Score.score = Score.score - 10;
 			MessageBox.Show("                   提示窗口","选择错误","确认");
@@ -46,7 +38,15 @@ public class paicha4 : MonoBehaviour {
 				//Debug.Log ("shabile");
 			};
 		}
-		if (go == button.gameObject)
+		if (go == button2.gameObject)
+		{
+			MessageBox.Show("                   提示窗口","接下来是不是要进行故障维修","维修","不进行");
+			MessageBox.confim = () => {
+				SceneManager.LoadScene(15);
+			};
+
+		}
+		if (go == button3.gameObject)
 		{
 			Score.score = Score.score - 10;
 			MessageBox.Show("                   提示窗口","选择错误","确认");
