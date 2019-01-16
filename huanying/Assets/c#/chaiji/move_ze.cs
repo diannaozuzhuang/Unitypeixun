@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Common;
+using MsgBoxBase=System.Windows.Forms.MessageBox;
+using WinForms=System.Windows.Forms;
 public class move_ze : MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
@@ -25,20 +27,20 @@ public class move_ze : MonoBehaviour
 		//从摄像机发出到点击坐标的射线
 		RaycastHit hitInfo;
 
-
 		if (isDrage == false)
 		{
+			//Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+			//从摄像机发出到点击坐标的射线
+			//RaycastHit hitInfo;
 			if (Physics.Raycast(ray, out hitInfo))
 			{
 				//划出射线，只有在scene视图中才能看到
 				Debug.DrawLine(ray.origin, hitInfo.point);
 				go = hitInfo.collider.gameObject;
-				//print(btnName);
 				screenSpace = cam.WorldToScreenPoint(go.transform.position);
 				offset = go.transform.position - cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
 				//物体的名字  
 				btnName = go.name;
-				//print (btnName);
 				//组件的名字
 			}
 			else
@@ -56,11 +58,11 @@ public class move_ze : MonoBehaviour
 					savename = btnName;
 				}
 				else {
-					MessageBox.Show("                   错误","顺序错误","再试一次");
+					/*MessageBox.Show("                   ,"再试一次");
 					MessageBox.confim = () => {
 						
-					};
-					//UnityEditor.EditorUtility.DisplayDialog("错误","顺序错误","确认","取消");
+					};*/
+					MsgBoxBase.Show ("错误,顺序错误",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 				}
 			}
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);

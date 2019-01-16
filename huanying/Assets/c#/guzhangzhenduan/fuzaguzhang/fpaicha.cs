@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Common;
-  
+using MsgBoxBase=System.Windows.Forms.MessageBox;
+using WinForms=System.Windows.Forms;
 public class fpaicha : MonoBehaviour {
 
 
@@ -36,10 +37,11 @@ public class fpaicha : MonoBehaviour {
 			gameobject.GetComponent<MeshRenderer> ().material.color = Color.white;
 		} else {
 			//UnityEditor.EditorUtility.DisplayDialog ("ERROR","不对", "确认", "取消");
-			MessageBox.Show("                   错误","错误","再试一次");
+			/*MessageBox.Show("                   错误","错误","再试一次");
 			MessageBox.confim = () => {
 
-			};
+			};*/
+			MsgBoxBase.Show ("错误",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 		}
 	}
 	public void bian()

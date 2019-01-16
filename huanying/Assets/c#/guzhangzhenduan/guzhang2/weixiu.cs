@@ -4,7 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using dafen;
 using Common;
-
+using MsgBoxBase=System.Windows.Forms.MessageBox;
+using WinForms=System.Windows.Forms;
 
 public class weixiu: MonoBehaviour
 {
@@ -32,17 +33,17 @@ public class weixiu: MonoBehaviour
 	{
 		if (finish == true) {
 			score1 = Score.score.ToString ();
-			//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
-			MessageBox.Show("                 FINISH","故障已排除，你的得分："+ score1, "确认");
+			/*MessageBox.Show("                 FINISH","故障已排除，你的得分："+ score1, "确认");
 			MessageBox.confim = () => {
 
-			};
+			};*/
+			MsgBoxBase.Show ("故障以排除，您的得分是" + score1,GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 			lurufenshu.jilu ("Assets/fenshu","guzahng2.txt",Score.score);
 			done = 1;
 			finish = false;
 		}
 		if(done==1)
-			SceneManager.LoadScene(5);
+			SceneManager.LoadScene(7);
 		//整体初始位置 
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		//从摄像机发出到点击坐标的射线
@@ -52,7 +53,6 @@ public class weixiu: MonoBehaviour
 		if (isDrage == false)
 		{
 			if (Physics.Raycast(ray, out hitInfo)){
-				//划出射线，只有在scene视图中才能看到
 				Debug.DrawLine(ray.origin, hitInfo.point);
 				go = hitInfo.collider.gameObject;
 				btnName = go.name;
@@ -76,20 +76,23 @@ public class weixiu: MonoBehaviour
 				buzhou = true;
 			} else if (btnName != "neicuntiao" && btnName != "neicuntiao1" && btnName != null&&getting==false) {
 				cishu = 0;
-				//UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认", "取消");
-				MessageBox.Show("                 错误", "此部件功能良好", "确认");
+				/*MessageBox.Show("                 错误", "此部件功能良好", "确认");
 				MessageBox.confim = () => {
-
+					Debug.Log("shagdsad");
 				};
+				Debug.Log("1111111");*/
+				MsgBoxBase.Show ("此部件功能良好",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 				Score.score = Score.score - 10;
 			} else if (btnName == "neicuntiao" && buzhou == false&&getting==false) {
-				cishu = 0;
-				//UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏内存拔出", "确认", "取消");
-				MessageBox.Show("                 错误", "请先将损坏内存拔出", "确认");
+				
+				/*MessageBox.Show("                 错误", "请先将损坏内存拔出", "确认");
 				MessageBox.confim = () => {
-
-				};
+					
+				};*/
+				MsgBoxBase.Show ("请先将坏内存拔出",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
+				cishu = 0;
 				Score.score = Score.score - 10;
+
 			}
 			isDrage = true;
 			if (Physics.Raycast (ray, out hitInfo)&&buzhou==true) {

@@ -20,7 +20,7 @@ public class UIMessage : MonoBehaviour
 		Cancletext.text = MessageBox.CancleStr;
 		jishul = MessageBox.jishu;
 		if (jishul == 1) {
-			Sure.gameObject.SetActive (false);
+			Cancle.gameObject.SetActive (false);
 		}
     }
 	/*public void test()

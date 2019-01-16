@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using dafen;
 using Common;
+using MsgBoxBase=System.Windows.Forms.MessageBox;
+using WinForms=System.Windows.Forms;
 public class guzhangweixiu: MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
@@ -32,10 +34,11 @@ public class guzhangweixiu: MonoBehaviour
 		if (finish == true) {
 			score1 = Score.score.ToString ();
 			//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
-			MessageBox.Show("                  FINISH","故障已排除，你的得分："+ score1, "我知道了");
+			/*MessageBox.Show("                  FINISH","故障已排除，你的得分："+ score1, "我知道了");
 			MessageBox.confim = () => {
 
-			};
+			};*/
+			MsgBoxBase.Show ("故障以排除，您的得分是" + score1,GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 			lurufenshu.jilu ("Assets/fenshu","guzahng4.txt",Score.score);
 			done = 1;
 			finish = false;
@@ -77,10 +80,11 @@ public class guzhangweixiu: MonoBehaviour
 			else if (btnName != "sanreqi1" &&btnName != "sanreqi"&& btnName != null&& getting==false) {
 				cishu = 0;
 				//UnityEditor.EditorUtility.DisplayDialog ("错误", "此部件功能良好", "确认");
-				MessageBox.Show("                  错误", "此部件功能良好", "确认");
+				/*MessageBox.Show("                  错误", "", "确认");
 				MessageBox.confim = () => {
 
-				};
+				};*/
+				MsgBoxBase.Show ("此部件功能良好",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 				Score.score = Score.score - 10;
 			}
 		}

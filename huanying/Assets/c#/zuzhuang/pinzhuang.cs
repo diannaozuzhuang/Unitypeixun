@@ -7,6 +7,7 @@ using System.IO;
 using System;
 using AssemblyCSharp;
 using Common;
+using UnityEngine.UI;
 
 
 public class pinzhuang: MonoBehaviour
@@ -20,6 +21,10 @@ public class pinzhuang: MonoBehaviour
 	int num_shengyu=4;
 	private Vector3 screenSpace;
 	private Vector3 offset;
+
+	private Button button;
+	private Button button2;
+
 	//序列化需要的，序列化用来存档
 	public static List<GameObject> objList= new List<GameObject>();
 	public static List<zidian> zd = new List<zidian> ();
@@ -28,6 +33,12 @@ public class pinzhuang: MonoBehaviour
 	public static List<zidian> zdzb = new List<zidian> ();
 	void Start()
 	{
+
+		button = GameObject.Find("Canvas/Image/Button").GetComponent<Button>();
+		EventTriggerListener.Get(button.gameObject).onClick = OnButtonClick;
+
+		button2 = GameObject.Find("Canvas/Image1/Button").GetComponent<Button>();
+		EventTriggerListener.Get(button2.gameObject).onClick = OnButtonClick;
 		cam = Camera.main;
 		if (objList.Count != 0) {
 			objList.Clear ();
@@ -313,6 +324,18 @@ public class pinzhuang: MonoBehaviour
 			j++;
 		}
 
+	}
+
+	private void OnButtonClick(GameObject go)
+	{
+		if (go == button2.gameObject)
+		{
+			SceneManager.LoadScene(2);
+		}
+		if (go == button.gameObject)
+		{
+			SaveGame ();
+		}
 	}
 
 

@@ -75,9 +75,11 @@ namespace Common
         {
             if (confim != null)
             {
+				Debug.Log("22222");
                 confim();
                 GameObject.Destroy(Messagebox);
-                TitleStr = "标题";
+				Debug.Log("33333");              
+				TitleStr = "标题";
                 ContentStr = null;
                 Time.timeScale = 0;
             }

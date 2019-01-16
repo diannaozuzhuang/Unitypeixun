@@ -34,7 +34,7 @@ public class paicha2 : MonoBehaviour {
 		{
 			MessageBox.Show("                   提示窗口","接下来是不是要进行故障维修","维修","不进行");
 			MessageBox.confim = () => {
-				SceneManager.LoadScene(13);
+				SceneManager.LoadScene(11);
 			};
 
 		}

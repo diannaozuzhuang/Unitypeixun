@@ -4,84 +4,95 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using Common;
+using UnityEngine.SceneManagement;
 
 public class chuangjian : MonoBehaviour {
+	
+	private Button button;
+	private Button button2;
 
 	void Start () {
-		
+		button = GameObject.Find("Canvas/Image/zuce").GetComponent<Button>();
+		EventTriggerListener.Get(button.gameObject).onClick = OnButtonClick;
+
+		button2 = GameObject.Find("Canvas/Image/fanhui").GetComponent<Button>();
+		EventTriggerListener.Get(button2.gameObject).onClick = OnButtonClick;
 	}
 
-	void Update () {
-		
-	}
-	public void OnMouseUp()
+	private void OnButtonClick(GameObject go)
 	{
-		string path = "Assets/yonghu";
-		string name1="yonghu.txt";
-		string zhanghao="";
-		string mima="";
-		string mima1="";
-		InputField zh = GameObject.Find ("Canvas/Image/yonghuming").GetComponent<InputField> ();
-		InputField mm = GameObject.Find ("Canvas/Image/mima").GetComponent<InputField> ();
-		InputField qmm = GameObject.Find ("Canvas/Image/qmima").GetComponent<InputField> ();
-		zhanghao = zh.text;
-		mima = mm.text;
-		mima1 = qmm.text;
-		if (zhanghao.Equals ("") || mima.Equals ("")) {
-			//UnityEditor.EditorUtility.DisplayDialog ("错误","用户名或密码不能为空","确认");
-			MessageBox.Show("                   错误","用户名或密码不能为空","确认");
-			MessageBox.confim = () => {
+		if (go == button.gameObject)
+		{
+			string path = "Assets/yonghu";
+			string name1="yonghu.txt";
+			string zhanghao="";
+			string mima="";
+			string mima1="";
+			InputField zh = GameObject.Find ("Canvas/Image/yonghuming").GetComponent<InputField> ();
+			InputField mm = GameObject.Find ("Canvas/Image/mima").GetComponent<InputField> ();
+			InputField qmm = GameObject.Find ("Canvas/Image/qmima").GetComponent<InputField> ();
+			zhanghao = zh.text;
+			mima = mm.text;
+			mima1 = qmm.text;
+			if (zhanghao.Equals ("") || mima.Equals ("")) {
+				//UnityEditor.EditorUtility.DisplayDialog ("错误","用户名或密码不能为空","确认");
+				MessageBox.Show("                   错误","用户名或密码不能为空","确认");
+				MessageBox.confim = () => {
 
-			};
-		}
-		else if (mima.Equals (mima1) && mima != null) {
-			
-			StreamReader sr = null;
-			sr = File.OpenText (path + "//" + name1);
-			string t_Line;
-			string[] str;
-			int jishu = 0;
-			while (((t_Line = sr.ReadLine ()) != null)) {
-				str = t_Line.Split (';');
-				if (zhanghao.Equals (str [0])) {
-					//UnityEditor.EditorUtility.DisplayDialog ("错误","该用户已存在","确认");
-					MessageBox.Show("                   错误","该用户已存在","确认");
-					MessageBox.confim = () => {
-
-					};
-					jishu++;
-
-					break;
-				}
+				};
 			}
-			sr.Close ();
-			sr.Dispose ();	
-			if(jishu==0){
+			else if (mima.Equals (mima1) && mima != null) {
+
+				StreamReader sr = null;
+				sr = File.OpenText (path + "//" + name1);
+				string t_Line;
+				string[] str;
+				int jishu = 0;
+				while (((t_Line = sr.ReadLine ()) != null)) {
+					str = t_Line.Split (';');
+					if (zhanghao.Equals (str [0])) {
+						//UnityEditor.EditorUtility.DisplayDialog ("错误","该用户已存在","确认");
+						MessageBox.Show("                   错误","该用户已存在","确认");
+						MessageBox.confim = () => {
+
+						};
+						jishu++;
+
+						break;
+					}
+				}
+				sr.Close ();
+				sr.Dispose ();	
+				if(jishu==0){
 					StreamWriter sw;
 					FileInfo fi = new FileInfo (path + "//" + name1);
 					sw = fi.AppendText ();
 					sw.WriteLine (zhanghao + ';' + mima);
 					sw.Close ();
 					sw.Dispose ();
-				//UnityEditor.EditorUtility.DisplayDialog ("成功","注册成功","确认");
-				MessageBox.Show("                   成功","注册成功","确认");
+					//UnityEditor.EditorUtility.DisplayDialog ("成功","注册成功","确认");
+					MessageBox.Show("                   成功","注册成功","确认");
+					MessageBox.confim = () => {
+
+					};
+				}
+
+			} else {
+
+				Debug.Log ("两次密码不一样");
+				//UnityEditor.EditorUtility.DisplayDialog ("错误","两次密码不一样","确认");
+				MessageBox.Show("                   错误","两次密码不一样","确认");
 				MessageBox.confim = () => {
 
 				};
-				}
-			
-		} else {
-		
-			Debug.Log ("两次密码不一样");
-			//UnityEditor.EditorUtility.DisplayDialog ("错误","两次密码不一样","确认");
-			MessageBox.Show("                   错误","两次密码不一样","确认");
-			MessageBox.confim = () => {
-
-			};
+			}
+		}
+		if (go == button2.gameObject)
+		{
+			SceneManager.LoadScene(0);
 		}
 	}
-	public void chachong(string str)
-	{
+	void Update () {
 		
 	}
 }
