@@ -16,7 +16,8 @@ public class chushihua : MonoBehaviour
 		GB[3] = GameObject.Find("finish/jixiang/zhuban/neicuntiao");
 		GB[4] = GameObject.Find("finish/jixiang/yingpan");
 
-		for (int i = 0; i < 5; i++) {
+		gb [1] = gb [0]=0;
+		for (int i = 2; i < 5; i++) {
 			gb [i] = random.Next (0, 2);
 			if (gb [i] == 1) {
 				GB [i].tag = "good";

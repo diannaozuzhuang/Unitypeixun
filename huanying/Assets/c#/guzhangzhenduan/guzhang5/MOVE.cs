@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using dafen;
 using Common;
+using MsgBoxBase=System.Windows.Forms.MessageBox;
+using WinForms=System.Windows.Forms;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MOVE : MonoBehaviour {
 	public float speed=5;
@@ -15,7 +19,8 @@ public class MOVE : MonoBehaviour {
 	public static string btnName;//射线碰撞物体的名字
 	public static string btnName1;
 	int cishu = 0;
-	int num_shengyu=7;
+	int num_shengyu;
+	int num_bad;
 	public static int score = 100;
 	private string score1;
 	private Vector3 screenSpace;
@@ -29,6 +34,7 @@ public class MOVE : MonoBehaviour {
 		GB[2] = GameObject.Find("zhuban/zhuban/neicuntiao");
 		GB[3] = GameObject.Find("yingpan");
 		GB[4] = GameObject.Find("zhuban/zhuban/xianka");
+		num_shengyu = 7;
 
 		for (int i = 0; i < 5; i++) {
 			if (chushihua.gb [i] == 1) {
@@ -36,11 +42,15 @@ public class MOVE : MonoBehaviour {
 			} 
 			else {
 				GB [i].tag = "bad";
+				num_bad++;
 			}
 			print ("i=="+i+"     "+chushihua.gb [i]);//1为good 0为bad；
 			print (GB[i].name+"   "+GB[i].tag);
 		}
-
+		num_shengyu = num_shengyu - num_bad;
+		if (GB [3].tag == "bad")
+			num_bad--;
+		print (num_shengyu);
 	}
 
 	void Update () {
@@ -60,14 +70,13 @@ public class MOVE : MonoBehaviour {
 					cishu++;
 
 					if (GameObject.Find(btnName).tag== "good") {
-						//cishu = 0;
-						//UnityEditor.EditorUtility.DisplayDialog("提示", "该部件完好", "确认", "取消");
-						MessageBox.Show("                 提示", "该部件完好", "确认");
-						MessageBox.confim = () => {
-
-						};
+						MsgBoxBase.Show ("该部件完好",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
+						score1 = score.ToString();
+						print (score1);
+						RawImage Score=GameObject.Find (score1).GetComponent<RawImage>();
+						Score.color=Color.white;
 						score = score-10;
-						print (score);
+						cishu--;	
 					}
 				}
 				else if (cishu == 1){
@@ -75,7 +84,8 @@ public class MOVE : MonoBehaviour {
 					btnName1 = go1.name;
 					if (btnName.Equals(btnName1)){
 						num_shengyu--;
-						if (num_shengyu <4) {
+						num_bad--;
+						if (num_bad==0) {
 							GameObject gos;
 							gos = GameObject.Find("zhuban/zhuban");
 							gos.layer = LayerMask.NameToLayer("Default");
@@ -107,21 +117,17 @@ public class MOVE : MonoBehaviour {
 						}
 					}
 					else{
-						//UnityEditor.EditorUtility.DisplayDialog("Error", "拼接错误", "确认", "取消");
-
-						//print("shibai");
+						print("shibai");
 					}
 					if (num_shengyu == 0) {
-						//UnityEditor.EditorUtility.DisplayDialog ("Finish", "维修完成", "确认", "取消");
+						print (num_shengyu);
 						score1 = score.ToString ();
-						//UnityEditor.EditorUtility.DisplayDialog ("FINISH","故障已排除，你的得分："+ score1, "确认", "取消");
-						MessageBox.Show("                 FINISH","故障已排除，你的得分："+ score1, "我知道了");
-						MessageBox.confim = () => {
-
-						};
+						MsgBoxBase.Show ("故障已排除，你的得分："+ score1,GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 						lurufenshu.jilu ("Assets/fenshu","guzahng5.txt",score);
+						SceneManager.LoadScene(7);
 					}
 					cishu = 0;
+					print (num_shengyu);
 				}
 			}
 		}  
