@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using MsgBoxBase=System.Windows.Forms.MessageBox;
+using WinForms=System.Windows.Forms;
 public class a : MonoBehaviour {
 
 	// Use this for initialization
@@ -20,7 +21,8 @@ public class a : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		UnityEditor.EditorUtility.DisplayDialog("Right", "开始排除故障", "确认");
+		
+		MsgBoxBase.Show ("开始排除故障",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 		SceneManager.LoadScene (12);
 	}
 }

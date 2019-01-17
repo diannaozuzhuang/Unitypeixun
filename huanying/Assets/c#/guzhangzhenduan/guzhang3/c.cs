@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using MsgBoxBase=System.Windows.Forms.MessageBox;
+using WinForms=System.Windows.Forms;
 public class c : MonoBehaviour {
 
 	// Use this for initialization
@@ -20,6 +21,7 @@ public class c : MonoBehaviour {
 	void OnClick()
 	{
 		Score.score = Score.score - 10;
-		UnityEditor.EditorUtility.DisplayDialog("Error", "内存功能完好", "确认", "取消");
+
+		MsgBoxBase.Show ("内存功能完好",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 	}
 }
