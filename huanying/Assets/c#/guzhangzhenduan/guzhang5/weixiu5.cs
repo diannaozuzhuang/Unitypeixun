@@ -16,7 +16,7 @@ public class weixiu5 : MonoBehaviour
 	public static string btnName;//射线碰撞物体的名字
 	public static string savename;
 	public static string[] peijian= new string[7]{"dianyuan","yingpan","xianka","neicuntiao","sanreqi","cpu","zhuban"};
-	public static int ii=0;
+	public static int ii;
 	bool duandian=false;
 	private Vector3 screenSpace;
 	private Vector3 offset;
@@ -24,6 +24,7 @@ public class weixiu5 : MonoBehaviour
 	Vector3 zhuanhuan;
 
 	void Start(){
+		ii = 0;
 		cam = Camera.main;
 		Setobj ();
 	}
@@ -56,11 +57,7 @@ public class weixiu5 : MonoBehaviour
 				duandian = true;
 			}
 			if(duandian==false){
-				//UnityEditor.EditorUtility.DisplayDialog("错误","","确认","取消");
-				/*MessageBox.Show("                 错误","请先卸下电源", "我知道了");
-				MessageBox.confim = () => {
-
-				};*/
+				
 				MsgBoxBase.Show ("请先卸下电源",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 			}
 			if (savename != btnName&&duandian==true) {
@@ -91,25 +88,8 @@ public class weixiu5 : MonoBehaviour
 						xie = "CPU";
 					else
 						xie = "已损坏主板";
-					//UnityEditor.EditorUtility.DisplayDialog (, "确认", "取消");
-					/*MessageBox.Show("                 错误", xie+"未卸下", "确认","取消");
-					MessageBox.confim = () => {
-
-					};*/
-					MsgBoxBase.Show ("错误"+xie+"未卸下",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
+					MsgBoxBase.Show (xie+"未卸下",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 				}
-				/*if (btnName != null) {
-					string GB=btnName;
-					if (GameObject.Find (GB).tag == "good") {
-						RawImage good=GameObject.Find ("isgood").GetComponent<RawImage>();
-						good.color=Color.green;
-					}
-					else if (GameObject.Find (GB).tag == "bad"){
-						RawImage bad=GameObject.Find ("isgood").GetComponent<RawImage>();
-						bad.color=Color.red;
-					}
-				}*/
-
 			}
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
 			Vector3 currentPosition = cam.ScreenToWorldPoint(currentScreenSpace) + offset;
@@ -119,11 +99,6 @@ public class weixiu5 : MonoBehaviour
 				go.transform.position = currentPosition;
 				zhuanhuan = cam.WorldToScreenPoint(go.transform.position);
 				if (ii==7&&savename == "zhuban") {
-					//UnityEditor.EditorUtility.DisplayDialog (, "确认", "取消");
-					/*MessageBox.Show("                 提示", "第一步已完成，更换完好主板并组装配件", "确认");
-					MessageBox.confim = () => {
-
-					};*/
 					MsgBoxBase.Show ("第一步已完成，更换完好主板并组装配件",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 					SceneManager.LoadScene(18);
 				}

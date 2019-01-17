@@ -21,7 +21,7 @@ public class MOVE : MonoBehaviour {
 	int cishu = 0;
 	int num_shengyu;
 	int num_bad;
-	public static int score = 100;
+	public int score = 100;
 	private string score1;
 	private Vector3 screenSpace;
 	private Vector3 offset;
@@ -76,7 +76,11 @@ public class MOVE : MonoBehaviour {
 						RawImage Score=GameObject.Find (score1).GetComponent<RawImage>();
 						Score.color=Color.white;
 						score = score-10;
-						cishu--;	
+						cishu--;
+						if (score == 0) {
+							MsgBoxBase.Show ("失误过多，请重新开始",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
+							SceneManager.LoadScene(18);
+						}
 					}
 				}
 				else if (cishu == 1){
@@ -98,7 +102,7 @@ public class MOVE : MonoBehaviour {
 							gos.layer = LayerMask.NameToLayer("Default");
 						}
 
-						GameObject gof;//判断两个物体设谁动；
+						GameObject gof;
 						gof = go1.transform.parent.gameObject;
 						if (gof.name == "jixiang") {                     
 							go.transform.position = go1.transform.position; 
@@ -114,12 +118,13 @@ public class MOVE : MonoBehaviour {
 								go1.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 360.0f);
 							}
 							go1.transform.position = go.transform.position; 
+							GameObject.Find(btnName).tag="good";
 						}
 					}
 					else{
 						print("shibai");
 					}
-					if (num_shengyu == 0) {
+					if (num_shengyu <= 0&&btnName=="dianyuan") {
 						print (num_shengyu);
 						score1 = score.ToString ();
 						MsgBoxBase.Show ("故障已排除，你的得分："+ score1,GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
