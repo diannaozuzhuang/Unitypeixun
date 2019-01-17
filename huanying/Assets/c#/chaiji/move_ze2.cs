@@ -1,12 +1,9 @@
-using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using MsgBoxBase=System.Windows.Forms.MessageBox;
-using WinForms=System.Windows.Forms;
+public class move_ze2 : MonoBehaviour {
 
-public class move_ze : MonoBehaviour
-{
 	private Camera cam;//发射射线的摄像机
 	private GameObject go;//射线碰撞的物体
 	public static string btnName;//射线碰撞物体的名字
@@ -18,12 +15,14 @@ public class move_ze : MonoBehaviour
 	private Vector3 offset;
 	private bool isDrage = false;
 	Vector3 zhuanhuan;
-	void Start()
-	{
+
+	// Use this for initialization
+	void Start () {
 		cam = Camera.main;
 	}
-	void Update ()
-	{
+	
+	// Update is called once per frame
+	void Update () {
 		//整体初始位置 
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		//从摄像机发出到点击坐标的射线
@@ -43,7 +42,6 @@ public class move_ze : MonoBehaviour
 				//物体的名字  
 				btnName = go.name;
 				//print (btnName);
-
 				//组件的名字
 			}
 			else
@@ -63,17 +61,15 @@ public class move_ze : MonoBehaviour
 				}
 				else {
 
-					MsgBoxBase.Show ("顺序错误",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
+					//UnityEditor.EditorUtility.DisplayDialog("错误","顺序错误","确认","取消");
 				}
 				if (iii==7){
 					//UnityEditor.EditorUtility.DisplayDialog("正确","恭喜成功完成拆机","确认","取消");
-					MsgBoxBase.Show ("拆机完成",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 					btnName = null;
 					ii = 0;
 					iii = 0;
 					SceneManager.LoadScene(2);
 				}
-
 			}
 			Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
 			Vector3 currentPosition = cam.ScreenToWorldPoint(currentScreenSpace) + offset;
@@ -91,5 +87,6 @@ public class move_ze : MonoBehaviour
 		}
 
 
+	
 	}
 }

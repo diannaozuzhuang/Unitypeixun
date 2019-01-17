@@ -77,7 +77,7 @@ public class weixiu3 : MonoBehaviour {
 				go.transform.position = currentPosition;
 				zhuanhuan = cam.WorldToScreenPoint (go.transform.position);
 				buzhou = true;
-			} else if (btnName != "dianyuan" && btnName != "dianyuan1" && btnName != null) {
+			} else if (btnName != "dianyuan" && btnName != "dianyuan1"&& btnName != "dianyuan11" && btnName != null) {
 				cishu = 0;
 				//UnityEditor.EditorUtility.DisplayDialog ("错误", btnName + "功能良好", "确认", "取消");
 				/*MessageBox.Show("                  错误", btnName + "功能良好", "确认");
@@ -86,7 +86,7 @@ public class weixiu3 : MonoBehaviour {
 				};*/
 				MsgBoxBase.Show ("此部件功能良好",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 				Score.score = Score.score - 10;
-				buzhou = false;
+
 			} else if (btnName == "dianyuan1" && buzhou == false) {
 				cishu = 0;
 				//UnityEditor.EditorUtility.DisplayDialog ("错误", "请先将损坏电源取出", "确认", "取消");
@@ -96,11 +96,8 @@ public class weixiu3 : MonoBehaviour {
 				};*/
 				MsgBoxBase.Show ("先将坏的部件拔出",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 				Score.score = Score.score - 10;
-				buzhou = false;
-			} else if(btnName == "dianyuan1" && buzhou == true){
-				//finish = true;
 
-			}
+			} 
 			isDrage = true;
 			if (Physics.Raycast (ray, out hitInfo)&&buzhou==true) {
 				//划出射线，只有在scene视图中才能看到
@@ -119,12 +116,12 @@ public class weixiu3 : MonoBehaviour {
 				}	
 				if (btnName.Equals(btnName1)&&(go1.transform.parent.gameObject.name!=go.transform.parent.gameObject.name))
 				{
-					print (btnName + "            " + btnName1);
+					print (go1.transform.parent.gameObject.name + "  " + go.transform.parent.gameObject.name);
 					go.layer = LayerMask.NameToLayer("Ignore Raycast");
 					go1.layer = LayerMask.NameToLayer("Ignore Raycast");
 					GameObject gof;//判断两个物体设谁动；
 					gof = go1.transform.parent.gameObject;
-					if (gof.name.Equals ("zhuban"))                    
+					if (go1.transform.parent.gameObject.name == "jixiang" )                    
 						go.transform.position = go1.transform.position; 
 					else 
 						go1.transform.position = go.transform.position;
