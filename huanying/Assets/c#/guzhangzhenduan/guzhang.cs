@@ -13,6 +13,7 @@ public class guzhang : MonoBehaviour {
 	private Button button5;
 	private Button button6;
 	private Button button7;
+	private Button button8;
 	void Start () {
 		button = GameObject.Find("Canvas/Button").GetComponent<Button>();
 		EventTriggerListener.Get(button.gameObject).onClick = OnButtonClick;
@@ -30,6 +31,8 @@ public class guzhang : MonoBehaviour {
 		EventTriggerListener.Get(button6.gameObject).onClick = OnButtonClick;
 		button7 = GameObject.Find("Canvas/Image/Button").GetComponent<Button>();
 		EventTriggerListener.Get(button7.gameObject).onClick = OnButtonClick;
+		button8 = GameObject.Find("Canvas/Button6").GetComponent<Button>();
+		EventTriggerListener.Get(button8.gameObject).onClick = OnButtonClick;
 	}
 	void Update () {
 
@@ -63,6 +66,10 @@ public class guzhang : MonoBehaviour {
 		if (go == button7.gameObject)
 		{
 			SceneManager.LoadScene(2);
+		}
+		if (go == button8.gameObject)
+		{
+			SceneManager.LoadScene(20);
 		}
 	}
 }
