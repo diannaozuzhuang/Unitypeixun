@@ -25,6 +25,8 @@ public class pinzhuang: MonoBehaviour
 	private Button button;
 	private Button button2;
 
+	public static float defen=100;
+
 	//序列化需要的，序列化用来存档
 	public static List<GameObject> objList= new List<GameObject>();
 	public static List<zidian> zd = new List<zidian> ();
@@ -136,6 +138,7 @@ public class pinzhuang: MonoBehaviour
                     else
                     {
 						//UnityEditor.EditorUtility.DisplayDialog("Error", "拼接错误", "确认", "取消");
+						defen=defen-5;
 						MessageBox.Show("                 Error", "拼接错误", "确认");
 						MessageBox.confim = () => {
 

@@ -12,6 +12,7 @@ public class denglu : MonoBehaviour {
 	private Button button;
 	private Button button2;
 
+	public static string username;
 	void Start () {
 		button = GameObject.Find("Canvas/Image/denglu").GetComponent<Button>();
 		EventTriggerListener.Get(button.gameObject).onClick = OnButtonClick;
@@ -47,6 +48,7 @@ public class denglu : MonoBehaviour {
 				if (zhanghao.Equals (str [0])) {
 					aa++;
 					if (mima.Equals (str [1])) {
+						username = zhanghao;
 						sr.Close ();
 						sr.Dispose ();
 						SceneManager.LoadScene (2);

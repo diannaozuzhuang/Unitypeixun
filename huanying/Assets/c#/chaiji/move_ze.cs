@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using MsgBoxBase=System.Windows.Forms.MessageBox;
 using WinForms=System.Windows.Forms;
+using System;
+using System.Data;
 
 public class move_ze : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class move_ze : MonoBehaviour
 	private Vector3 offset;
 	private bool isDrage = false;
 	Vector3 zhuanhuan;
+
+	public static float chaijidefen=100;
+	SqlAccess sql = new SqlAccess();
 	void Start()
 	{
 		cam = Camera.main;
@@ -63,6 +68,7 @@ public class move_ze : MonoBehaviour
 				}
 				else {
 
+					chaijidefen -= 5;
 					MsgBoxBase.Show ("顺序错误",GetType().Name,WinForms.MessageBoxButtons.OK,WinForms.MessageBoxIcon.Asterisk);
 				}
 				if (iii==7){
@@ -71,6 +77,13 @@ public class move_ze : MonoBehaviour
 					btnName = null;
 					ii = 0;
 					iii = 0;
+
+					DateTime date = DateTime.Now;
+					string fenshu_date = date.ToString ("yyyy-MM-dd HH:mm:ss");
+					//Debug.Log(fenshu_date);
+					DataSet ds = sql.InsertInto ("shixun_fenshu",denglu.username,"2",chaijidefen ,fenshu_date);
+					sql.Close ();
+
 					SceneManager.LoadScene(2);
 				}
 

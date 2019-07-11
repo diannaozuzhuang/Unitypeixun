@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Data;
+
+
 public class pinzhuang2: MonoBehaviour
 {
 	private Camera cam;//发射射线的摄像机
@@ -12,6 +16,9 @@ public class pinzhuang2: MonoBehaviour
 	int num_shengyu=4;
 	private Vector3 screenSpace;
 	private Vector3 offset;
+
+	SqlAccess sql = new SqlAccess();
+
 	void Start()
 	{
 		cam = Camera.main;
@@ -52,13 +59,18 @@ public class pinzhuang2: MonoBehaviour
 						}
 
 					} else {
-						//UnityEditor.EditorUtility.DisplayDialog ("Error", "拼接错误", "确认", "取消");
+						UnityEditor.EditorUtility.DisplayDialog ("Error", "拼接错误", "确认", "取消");
+						pinzhuang .defen-=5;
 						print ("shibai");
 					}
 					if (num_shengyu == 0) {
-						//UnityEditor.EditorUtility.DisplayDialog ("Finish", "拼接成功", "确认", "取消");	
 
-
+						DateTime date = DateTime.Now;
+						string fenshu_date = date.ToString ("yyyy-MM-dd HH:mm:ss");
+						//Debug.Log(fenshu_date);
+						DataSet ds = sql.InsertInto ("shixun_fenshu",denglu.username,"1",pinzhuang .defen,fenshu_date);
+						sql.Close ();
+						UnityEditor.EditorUtility.DisplayDialog ("Finish", "拼接成功", "确认", "取消");	
 					}
 
 					cishu = 0;
